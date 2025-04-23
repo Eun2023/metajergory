@@ -1,0 +1,32 @@
+name: Fetch Brunch Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 매일 자정에 실행
+  workflow_dispatch:  # 수동으로 실행할 수 있도록 설정
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Fetch brunch data
+        run: |
+          node netlify/functions/fetchBrunch.js  # 브런치 글을 가져오는 스크립트 실행
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Update brunch posts"
+          git push
