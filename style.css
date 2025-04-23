@@ -1,0 +1,492 @@
+/* Metajergory Landing Page Styles */
+:root {
+  --primary: #7b2cbf;
+  --primary-dark: #5a189a;
+  --primary-light: #9d4edd;
+  --secondary: #f8f9fa;
+  --text: #212529;
+  --text-light: #6c757d;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--secondary);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+header .main-nav a {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+header .main-nav a:hover {
+  color: var(--primary-dark);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--white);
+  background-color: var(--primary);
+  border-radius: 999px;
+}
+
+/* Hero */
+.hero {
+  padding: 140px 0 80px;
+  text-align: center;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-radius: 0 0 30px 30px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Sections */
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2.2rem;
+  color: var(--primary-dark);
+}
+
+/* Resources */
+.resources {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.resource-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.resource-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: var(--primary-light);
+  color: var(--white);
+  padding: 20px;
+  text-align: center;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body p {
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+
+/* Newsletter */
+.newsletter {
+  padding: 80px 0;
+  background-color: var(--secondary);
+  border-radius: 30px;
+  margin: 40px 0;
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter h2 {
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+}
+
+.newsletter p {
+  margin-bottom: 30px;
+  color: var(--text-light);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.2);
+}
+
+.btn-subscribe {
+  width: 100%;
+  font-size: 16px;
+  padding: 14px;
+}
+
+/* Videos */
+.videos {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.video-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  background-color: var(--white);
+  border: 1px solid #e5e7eb;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background-color: #e5e7eb;
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-info {
+  padding: 20px;
+}
+
+.video-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+}
+
+.video-info p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+  padding: 60px 0;
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-links h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--primary-light);
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--white);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: var(--primary-light);
+}
+
+.copyright {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+.book-promo {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.book-cover {
+  max-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.author-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.author-info {
+  font-size: 0.9rem;
+  color: #444;
+  max-width: 300px;
+  text-align: center;
+}
+/* 추가: 유료/무료 강의 뱃지 */
+.badge-free {
+  background-color: #6c757d;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.badge-paid {
+  background-color: #6c757d;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+/* 추가: 강의 섹션 썸네일 */
+.lecture-thumbnail {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+/* 선택적으로 버튼 컬러도 구분하고 싶다면 */
+.btn-outline.btn-free {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+.btn-outline.btn-free:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-outline.btn-paid {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+.btn-outline.btn-paid:hover {
+  background-color: #6c757d;
+  color: white;
+}

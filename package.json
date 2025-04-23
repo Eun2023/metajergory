@@ -1,0 +1,13 @@
+{
+<<<<<<< HEAD
+  "name": "metajergory",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+=======
+  "dependencies": {
+    "cheerio": "^1.0.0"
+>>>>>>> d983889 (Add cheerio dependency)
+  }
+}
