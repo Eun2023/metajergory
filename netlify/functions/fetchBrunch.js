@@ -7,6 +7,10 @@ async function fetchBrunch() {
     const res = await fetch(url);  // 해당 URL에서 HTML 데이터 가져오기
     const body = await res.text();  // HTML 텍스트를 읽어옴
 
+   // ===== 디버깅: 초기 HTML 찍어보기 =====
+   console.log(body);
+   // =====================================
+
     // cheerio로 HTML 파싱
     const $ = cheerio.load(body);
 
