@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"  # Netlify Functions 경로
+  publish = "public"               # 배포할 웹사이트 위치
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
