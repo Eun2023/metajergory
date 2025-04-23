@@ -15,7 +15,12 @@ async function fetchBrunch() {
     // 각 글(article)에서 필요한 데이터 추출
     $('article').each((index, element) => {
       const title = $(element).find('h2').text();  // 글 제목
-      const link = $(element).find('a').attr('href');  // 글 URL
+        // 글 URL: 만약 상대 경로(/@metajergory/…)로만 넘어오면 절대 경로로 보정
+    let link = $(element).find('a').attr('href');
+    if (link && !link.startsWith('http')) {
+      link = `https://brunch.co.kr${link}`;
+    }
+
       const summary = $(element).find('p').text();  // 글 요약
 
       posts.push({ title, summary, url: link });
