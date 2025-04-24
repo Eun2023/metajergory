@@ -15,8 +15,16 @@
   <meta property="og:image" content="https://metajergory.com/assets/meta-cover.jpg">
   <meta property="og:url" content="https://metajergory.com">
 
+  <!-- Brunch RSS feed -->
+  <link rel="alternate"
+        type="application/rss+xml"
+        title="메타저고리 rss"
+        href="https://brunch.co.kr/rss/@@gcIE">
+
   <title>Metajergory - AI 실험실</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGQP23MJM0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -26,66 +34,40 @@
   </script>
 </head>
 <body>
-<!-- 헤더 바로 아래에 추가 -->
-<section class="hero">
-  <div class="container">
-    <h1>AI 실험실에서 컨텐츠가 태어나다</h1>
-    <p>인공지능과 창의성이 만나는 곳,<br/>Metajergory에서 AI 혁신을 경험하세요.</p>
-    <div class="cta-buttons">
-      <a href="#youtube-videos" class="btn">영상 보기</a>
-      <a href="#lectures"       class="btn">강의 코너</a>
+  <!-- 1. Hero 섹션 -->
+  <section class="hero">
+    <div class="container">
+      <h1>AI 실험실에서 컨텐츠가 태어나다</h1>
+      <p>인공지능과 창의성이 만나는 곳,<br/>Metajergory에서 AI 혁신을 경험하세요.</p>
+      <div class="cta-buttons">
+        <a href="#youtube-videos" class="btn">영상 보기</a>
+        <a href="#lectures" class="btn">강의 코너</a>
+      </div>
+      <span class="badge">AI가 만들어준 페이지입니다</span>
     </div>
+  </section>
 
-    <span class="badge">AI가 만들어준 페이지입니다</span>
-  </div>
-</section>
-
-<!-- 최신 글(Brunch) 섹션 -->
-<section id="latest-posts" class="resources">
-  <div class="container">
-    <h2 class="section-title"> 최신 글</h2>
-    <div class="resources-grid">
-      <!-- brunch.js가 이 안에 카드를 동적으로 생성합니다 -->
+  <!-- 2. 최신 글(Brunch) 섹션 -->
+  <section id="latest-posts" class="resources">
+    <div class="container">
+      <h2 class="section-title">최신 글</h2>
+      <div class="resources-grid">
+        <!-- brunch.js가 이 안에 카드를 생성합니다 -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
- <!-- JavaScript 코드 삽입 -->
-  <script>
-    fetch('/.netlify/functions/fetchBrunch')
-      .then(res => res.json())
-      .then(posts => {
-        const container = document.querySelector('#latest-posts .resources-grid');
-        
-        posts.data.forEach(post => {
-          const postElement = document.createElement('div');
-          postElement.className = 'resource-card';
-          postElement.innerHTML = `
-            <div class="card-header">${post.title}</div>
-            <div class="card-body">
-              <p>${post.summary}</p>
-              <a href="${post.url}" target="_blank" class="btn-outline">글 보기</a>
-            </div>
-          `;
-          container.appendChild(postElement);
-        });
-      })
-      .catch(err => console.error('브런치 글 불러오기 실패:', err));
-  </script>
-</body>
-</html>
-
-<!-- 강의 코너 섹션 -->
-<section id="lectures" class="resources">
-  <div class="container">
-    <h2 class="section-title"> 강의 코너</h2>
-    <div class="resources-grid">
-      <!-- lectures.js가 이 안에 카드들을 동적으로 생성합니다 -->
+  <!-- 3. 강의 코너 섹션 -->
+  <section id="lectures" class="resources">
+    <div class="container">
+      <h2 class="section-title">강의 코너</h2>
+      <div class="resources-grid">
+        <!-- lectures.js가 이 안에 카드를 생성합니다 -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- 유튜브 섹션 -->
+  <!-- 4. 최근 영상 섹션 -->
   <section class="videos">
     <div class="container">
       <h2 class="section-title">최근 영상</h2>
@@ -93,62 +75,56 @@
     </div>
   </section>
 
- <!-- 책 섹션 -->
-<section class="book-promo">
-  <div class="container">
-    <h2 class="section-title"> 출간 도서</h2>
+  <!-- 5. 출간 도서 섹션 -->
+  <section class="book-promo">
+    <div class="container">
+      <h2 class="section-title">출간 도서</h2>
+      <img src="book-cover.jpg" alt="책 표지" class="book-cover" />
+      <h3>ChatGPT로 돈 버는 10가지 아이템</h3>
+      <p>프롬프트 엔지니어가 직접 정리한 수익화 전략, 이젠 당신도 시작할 수 있습니다.</p>
+      <div class="author-box">
+        <img src="author.png" alt="저자 프로필" class="author-photo" />
+        <div class="author-info">
+          <strong>신은정</strong><br/>
+          프롬프트 엔지니어 · 콘텐츠 기획자<br/>
+          Metajergory 유튜브 운영자<br/>
+          “프롬프트는 도구, 목적은 창작.”
+        </div>
+      </div>
+      <a href="https://product.kyobobook.co.kr/detail/S000201787634" class="btn" target="_blank">교보문고에서 보기</a>
+    </div>
+  </section>
 
-    <img src="book-cover.jpg" alt="책 표지" class="book-cover" />
-
-    <h3>ChatGPT로 돈 버는 10가지 아이템</h3>
-    <p>프롬프트 엔지니어가 직접 정리한 수익화 전략, 이젠 당신도 시작할 수 있습니다.</p>
-
-    <div class="author-box">
-      <img src="author.png" alt="저자 프로필" class="author-photo" />
-      <div class="author-info">
-        <strong>신은정</strong><br/>
-        프롬프트 엔지니어 · 콘텐츠 기획자<br/>
-        Metajergory 유튜브 운영자<br/>
-        “프롬프트는 도구, 목적은 창작.”
+  <!-- 6. 뉴스레터 구독 폼 섹션 -->
+  <section id="newsletter" class="newsletter">
+    <div class="newsletter-content">
+      <h2>뉴스레터 구독</h2>
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="?success=true">
+        <p class="hidden">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input type="email" name="email" placeholder="you@example.com" required class="form-control" />
+        <button type="submit" class="btn btn-subscribe">구독하기</button>
+      </form>
+      <div id="form-message" style="display:none; margin-top:20px; color:var(--primary-dark); font-weight:500;">
+        <script>
+          const form = document.forms['newsletter'];
+          const messageDiv = document.getElementById('form-message');
+          if (window.location.search.includes('success=true')) {
+            form.style.display = 'none';
+            messageDiv.style.display = 'block';
+            messageDiv.innerText = '감사합니다! 뉴스레터 구독이 완료되었습니다.';
+          }
+        </script>
       </div>
     </div>
+  </section>
 
-    <a href="https://product.kyobobook.co.kr/detail/S000201787634" class="btn" target="_blank">교보문고에서 보기</a>
-  </div>
-</section>
-  <!-- Footer도 그대로 -->
-<!-- ========== Newsletter 구독 폼 시작 ========== -->
-<section id="newsletter" class="newsletter">
-  <div class="newsletter-content">
-    <h2>뉴스레터 구독</h2>
-<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="?success=true">
-  <p class="hidden">
-    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-  </p>
-  <input type="hidden" name="form-name" value="newsletter" />
-  <input type="email" name="email" placeholder="you@example.com" required class="form-control" />
-  <button type="submit" class="btn btn-subscribe">구독하기</button>
-</form>
-
-<!-- 메시지 표시용 -->
-<div id="form-message" style="display:none; margin-top: 20px; color: var(--primary-dark); font-weight: 500;">
-<script>
-  const form = document.forms['newsletter'];
-  const messageDiv = document.getElementById('form-message');
-
-  if (window.location.search.includes('success=true')) {
-    form.style.display = 'none';
-    messageDiv.style.display = 'block';
-    messageDiv.innerText = '감사합니다! 뉴스레터 구독이 완료되었습니다.';
-  }
-</script>
-  </div>   <!-- form-message 닫기 -->
-  </div>   <!-- newsletter-content 닫기 -->
-</section>  <!-- newsletter 섹션 닫기 -->
-<!-- ========== Newsletter 구독 폼 끝 ========== -->
-  <!-- 자동화 스크립트 -->
+  <!-- 7. 스크립트 로드 (맨 아래) -->
   <script src="brunch.js"></script>
-  <script src="youtube.js"></script>
   <script src="lectures.js"></script>
+  <script src="youtube.js"></script>
 </body>
 </html>
+
