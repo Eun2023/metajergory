@@ -5,10 +5,9 @@ const parser = new Parser();
 
 exports.handler = async function(event, context) {
   try {
-    // 본인의 브런치 RSS URL (프로필 페이지 소스에서 확인 가능)
+    // 본인 프로필의 브런치 RSS URL (브런치 프로필 HTML <link rel="alternate"...> 에서 가져오기)
     const feed = await parser.parseURL("https://brunch.co.kr/rss/@@gcIE");
 
-    // feed.items 배열에서 필요한 정보만 추출
     const posts = feed.items.map(item => ({
       title:   item.title,
       summary: item.contentSnippet || item.content || "",
