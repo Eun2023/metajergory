@@ -1,34 +1,39 @@
-// netlify/functions/fetchBrunch.js
-
-const fetch = require('node-fetch');
+const fetch   = require('node-fetch');
+const cheerio = require('cheerio');
 
 exports.handler = async function(event, context) {
   try {
-    // Brunch RSS URL (프로필 페이지 <head>의 <link rel="alternate"> href 값)
+    // 올바른 RSS URL
     const rssUrl = 'https://brunch.co.kr/rss/@@gcIE';
+    const res    = await fetch(rssUrl);
+    const xml    = await res.text();
 
-    // rss2json API로 XML→JSON 변환
-    const apiRes = await fetch(
-      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`
-    );
-    const rssData = await apiRes.json();
+    // XML 파싱 모드로 cheerio 초기화
+    const $      = cheerio.load(xml, { xmlMode: true });
+    const items  = [];
 
-    // items 배열을 우리가 쓸 형태로 매핑
-    const posts = (rssData.items || []).map(item => ({
-      title:   item.title,
-      summary: item.description,
-      url:     item.link
-    }));
+    // <item> 태그마다 순회
+    $('item').each((_, el) => {
+      const title       = $(el).find('title').text();
+      const link        = $(el).find('link').text();
+      const description = $(el).find('description').text();
+      items.push({
+        title,
+        url: link,
+        summary: description
+      });
+    });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ data: posts }),
+      body: JSON.stringify({ data: items }),
     };
-  } catch (error) {
-    console.error('Error fetching brunch RSS:', error);
+
+  } catch (err) {
+    console.error('fetchBrunch error:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ error: err.message }),
     };
   }
 };
