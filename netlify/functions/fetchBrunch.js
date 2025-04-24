@@ -1,27 +1,28 @@
 // netlify/functions/fetchBrunch.js
-const Parser = require('rss-parser');
+const Parser = require("rss-parser");
 const parser = new Parser();
 
 exports.handler = async function(event, context) {
   try {
-    // 본인의 Brunch RSS URL (프로필 ID 부분을 확인하세요)
-    const feed = await parser.parseURL('https://brunch.co.kr/rss/@@gcIE');
-    // feed.items 배열에서 필요한 데이터만 뽑아냅니다
-    const data = feed.items.map(item => ({
+    // 메타저고리 브런치 RSS URL (프로필 → 우클릭 → RSS 링크 복사)
+    const feed = await parser.parseURL("https://brunch.co.kr/rss/@@gcIE");
+
+    // 필요한 항목만 뽑아서 새로운 배열로 만듭니다
+    const posts = feed.items.map(item => ({
       title: item.title,
-      summary: item.contentSnippet || item.content || '',
+      summary: item.contentSnippet || "",
       url: item.link
     }));
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ data })
+      body: JSON.stringify({ data: posts })
     };
-  } catch (error) {
-    console.error('Error fetching brunch RSS:', error);
+  } catch (err) {
+    console.error("fetchBrunch error:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Error fetching brunch RSS' })
+      body: JSON.stringify({ error: "Failed to fetch RSS feed" })
     };
   }
 };
