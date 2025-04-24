@@ -5,7 +5,7 @@ const parser = new Parser();
 exports.handler = async function(event, context) {
   try {
     // RSS 피드 주소: @@ 뒤에 나오는 ID를 그대로 사용
-    const feed = await parser.parseURL('https://brunch.co.kr/rss/@@metajergory');
+    const feed = await parser.parseURL('https://brunch.co.kr/rss/@@gcIE');
 
     // 필요한 필드만 골라서 배열로 재생성
     const posts = feed.items.map(item => ({
