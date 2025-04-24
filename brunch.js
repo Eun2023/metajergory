@@ -7,15 +7,16 @@ fetch('/.netlify/functions/fetchBrunch')
 
     if (json.data && Array.isArray(json.data) && json.data.length) {
       json.data.forEach(post => {
-        const { title, link, contentSnippet } = post;
+        // feed.items 에서 매핑한 필드명을 그대로 사용합니다
+        const { title, url, summary } = post;
 
         const card = document.createElement('div');
         card.className = 'resource-card';
         card.innerHTML = `
           <div class="card-header">${title}</div>
           <div class="card-body">
-            <p>${contentSnippet}</p>
-            <a href="${link}" target="_blank" class="btn-outline">글 보기</a>
+            <p>${summary}</p>
+            <a href="${url}" target="_blank" class="btn-outline">글 보기</a>
           </div>
         `;
         container.appendChild(card);
@@ -26,3 +27,4 @@ fetch('/.netlify/functions/fetchBrunch')
     }
   })
   .catch(err => console.error('브런치 글 불러오기 실패:', err));
+
