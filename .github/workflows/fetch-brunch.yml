@@ -23,10 +23,15 @@ jobs:
 
       - name: Fetch brunch data
         run: |
-          node netlify/functions/fetchBrunch.js  # 브런치 글을 가져오는 스크립트 실행
+          node netlify/functions/fetchBrunch.js
+
+      - name: Set up Git config
+        run: |
+          git config user.name "Eun2023"
+          git config user.email "sejhdo@gmail.com"
 
       - name: Commit changes
         run: |
           git add .
-          git commit -m "Update brunch posts"
+          git commit -m "Update brunch posts for metajergory project"
           git push
