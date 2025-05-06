@@ -18,12 +18,10 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
 
       - name: Fetch brunch data
-        run: |
-          node netlify/functions/fetchBrunch.js
+        run: node netlify/functions/fetchBrunch.js
 
       - name: Set up Git config
         run: |
@@ -34,4 +32,6 @@ jobs:
         run: |
           git add .
           git commit -m "Update brunch posts for metajergory project"
-          git push
+          git push --set-upstream origin $(git branch --show-current) || echo "No changes to commit"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
